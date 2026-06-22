@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asiservy - Portal Educativo de Solicitudes Internas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="msj-contenedor" class="msj-oculto" role="alert" aria-live="assertive">
+        <p id="msj-texto"></p>
+    </div>
+
+    <main id="seccion-login" class="vista-activa">
+        <div class="tarjeta-flotante login-contenedor">
+            <header class="login-encabezado">
+                <img src="logo.png" alt="Logo de Asiservy" class="logo-minimalista" id="login-logo">
+                <h1>Asiservy</h1>
+                <p>Portal Educativo de Solicitudes Internas</p>
+            </header>
+
+            <form id="form-login" novalidate>
+                <div class="grupo-control">
+                    <label for="login-correo">Correo Electrónico:</label>
+                    <input type="email" id="login-correo" required placeholder="usuario@correo.com">
+                </div>
+
+                <div class="grupo-control">
+                    <label for="login-pin">PIN de Acceso:</label>
+                    <input type="password" id="login-pin" required maxlength="6" placeholder="••••••">
+                </div>
+
+                <button type="submit" id="btn-ingresar" class="btn-flotante btn-principal">Ingresar</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="seccion-principal" class="vista-oculta">
+        
+        <nav id="barra-navegacion" class="tarjeta-flotante">
+            <div class="nav-identidad">
+                <img src="logo.png" alt="Logo de Asiservy" class="logo-minimalista" id="nav-logo">
+                <span>Asiservy</span>
+            </div>
+            <div id="info-usuario-autenticado">
+                <span id="sesion-nombre"></span>
+                <span id="sesion-correo"></span>
+            </div>
+            <button type="button" id="btn-cerrar-sesion" class="btn-flotante btn-secundario">Cerrar Sesión</button>
+        </nav>
+
+        <main id="contenido-plataforma">
+            
+            <section id="modulo-formulario" class="tarjeta-flotante">
+                <h2>Nueva Solicitud Interna</h2>
+                <form id="form-solicitud" novalidate>
+                    
+                    <div class="grupo-control">
+                        <label for="solicitud-tipoSolicitud">Tipo de Solicitud:</label>
+                        <select id="solicitud-tipoSolicitud" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Academica">Académica</option>
+                            <option value="Administrativa">Administrativa</option>
+                            <option value="Soporte Tecnico">Soporte Técnico</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-control">
+                        <label for="solicitud-titulo">Título:</label>
+                        <input type="text" id="solicitud-titulo" required placeholder="Breve título de la solicitud">
+                    </div>
+
+                    <div class="grupo-control">
+                        <label for="solicitud-descripcion">Descripción:</label>
+                        <textarea id="solicitud-descripcion" required placeholder="Detalle los motivos de su solicitud..."></textarea>
+                    </div>
+
+                    <div class="grupo-control">
+                        <label for="solicitud-prioridad">Prioridad:</label>
+                        <select id="solicitud-prioridad" required>
+                            <option value="" disabled selected>Seleccione la prioridad</option>
+                            <option value="Baja">Baja</option>
+                            <option value="Media">Media</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="btn-guardar-solicitud" class="btn-flotante btn-principal">Enviar Solicitud</button>
+                </form>
+            </section>
+
+            <section id="modulo-consulta" class="tarjeta-flotante">
+                <header class="consulta-encabezado">
+                    <h2>Mis Solicitudes Históricas</h2>
+                    <div class="consulta-acciones">
+                        <button type="button" id="btn-actualizar" class="btn-flotante btn-principal">Actualizar</button>
+                        <button type="button" id="btn-imprimir" class="btn-flotante btn-secundario">Imprimir / Guardar PDF</button>
+                    </div>
+                </header>
+
+                <div class="tabla-contenedor" id="imprimible-area">
+                    <table id="tabla-solicitudes">
+                        <thead>
+                            <tr>
+                                <th>ID Solicitud</th>
+                                <th>Fecha Registro</th>
+                                <th>Tipo</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Prioridad</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-cuerpo-solicitudes">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

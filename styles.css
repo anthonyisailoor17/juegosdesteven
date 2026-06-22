@@ -1,0 +1,478 @@
+/* ==========================================================================
+   VARIABLES DE DISEÑO (Identidad Asiservy)
+   ========================================================================== */
+:root {
+    /* Paleta de Colores */
+    --color-principal: #0A4275; /* Azul Asiservy */
+    --color-principal-hover: #062b4d;
+    --color-secundario: #FFC107; /* Amarillo Asiservy */
+    --color-secundario-hover: #e0a800;
+    
+    /* Fondos y Texto */
+    --fondo-sitio: #F4F7F6;
+    --fondo-tarjeta: #FFFFFF;
+    --texto-principal: #333333;
+    --texto-etiquetas: #555555;
+    --texto-blanco: #FFFFFF;
+    
+    /* Estilos Modales y Flotantes */
+    --sombra-flotante: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --sombra-modal-hover: 0 16px 32px rgba(0, 0, 0, 0.2);
+    --radio-tarjeta: 16px;
+    --radio-boton: 30px;
+    --radio-input: 8px;
+    
+    /* Transiciones */
+    --transicion-suave: all 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   RESETEO BASE Y TIPOGRAFÍA
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--fondo-sitio);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   CLASES DE VISIBILIDAD (Manejo de Vistas)
+   ========================================================================== */
+.vista-activa {
+    display: flex !important;
+    animation: fadeIn 0.5s ease;
+}
+
+.vista-oculta {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   ESTILOS MODALES Y FLOTANTES
+   ========================================================================== */
+.tarjeta-flotante {
+    background-color: var(--fondo-tarjeta);
+    border-radius: var(--radio-tarjeta);
+    box-shadow: var(--sombra-flotante);
+    padding: 2.5rem;
+    transition: var(--transicion-suave);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tarjeta-flotante:hover {
+    box-shadow: var(--sombra-modal-hover);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+.btn-flotante {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--radio-boton);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion-suave);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-flotante:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-principal {
+    background-color: var(--color-principal);
+    color: var(--texto-blanco);
+}
+
+.btn-principal:hover {
+    background-color: var(--color-principal-hover);
+    box-shadow: 0 6px 15px rgba(10, 66, 117, 0.3);
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--texto-principal);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-secundario-hover);
+    box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+}
+
+/* ==========================================================================
+   NOTIFICACIONES Y MENSAJES (Toasts)
+   ========================================================================== */
+#msj-contenedor {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 1rem 2rem;
+    border-radius: var(--radio-input);
+    box-shadow: var(--sombra-modal-hover);
+    font-weight: 600;
+    max-width: 350px;
+    transform: translateX(150%);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Clases dinámicas a controlar desde JS */
+#msj-contenedor.mostrar {
+    transform: translateX(0);
+}
+
+.msj-oculto {
+    display: none;
+}
+
+.msj-carga {
+    background-color: var(--color-secundario);
+    color: var(--texto-principal);
+}
+
+.msj-exito {
+    background-color: #28a745;
+    color: var(--texto-blanco);
+}
+
+.msj-error {
+    background-color: #dc3545;
+    color: var(--texto-blanco);
+}
+
+/* ==========================================================================
+   PANTALLA DE LOGIN
+   ========================================================================== */
+#seccion-login {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-contenedor {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-encabezado {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-minimalista {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.login-encabezado h1 {
+    color: var(--color-principal);
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.login-encabezado p {
+    color: var(--texto-etiquetas);
+    font-size: 0.95rem;
+}
+
+#form-login button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   FORMULARIOS Y CONTROLES
+   ========================================================================== */
+.grupo-control {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.grupo-control label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-principal);
+    font-size: 0.95rem;
+}
+
+.grupo-control input,
+.grupo-control select,
+.grupo-control textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--radio-input);
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: var(--transicion-suave);
+    color: var(--texto-principal);
+}
+
+.grupo-control input:focus,
+.grupo-control select:focus,
+.grupo-control textarea:focus {
+    border-color: var(--color-principal);
+    outline: none;
+    background-color: var(--fondo-tarjeta);
+    box-shadow: 0 0 0 3px rgba(10, 66, 117, 0.15);
+}
+
+.grupo-control textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==========================================================================
+   ÁREA PRINCIPAL Y NAVEGACIÓN
+   ========================================================================== */
+#seccion-principal {
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 40px; /* Estilo píldora */
+}
+
+.nav-identidad {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+#nav-logo {
+    max-width: 40px;
+    margin-bottom: 0;
+}
+
+#info-usuario-autenticado {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-right: 1.5rem;
+}
+
+#sesion-nombre {
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+#sesion-correo {
+    font-size: 0.85rem;
+    color: var(--texto-etiquetas);
+}
+
+#contenido-plataforma {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* ==========================================================================
+   SECCIÓN DE SOLICITUDES Y TABLA
+   ========================================================================== */
+#modulo-formulario h2 {
+    color: var(--color-principal);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.consulta-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.consulta-encabezado h2 {
+    color: var(--color-principal);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.consulta-acciones {
+    display: flex;
+    gap: 1rem;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border-radius: var(--radio-input);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--fondo-tarjeta);
+    min-width: 800px;
+}
+
+thead {
+    background-color: var(--color-principal);
+    color: var(--texto-blanco);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 0.95rem;
+}
+
+th {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+tbody tr {
+    transition: var(--transicion-suave);
+}
+
+tbody tr:hover {
+    background-color: #f4f8fc; /* Ligero tono azul */
+}
+
+/* ==========================================================================
+   DISEÑO RESPONSIVO (Móviles y Tablets)
+   ========================================================================== */
+@media (max-width: 992px) {
+    #contenido-plataforma {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .tarjeta-flotante {
+        padding: 1.5rem;
+    }
+
+    #barra-navegacion {
+        flex-direction: column;
+        gap: 1rem;
+        border-radius: var(--radio-tarjeta);
+        text-align: center;
+    }
+
+    #info-usuario-autenticado {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .consulta-encabezado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .consulta-acciones {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .consulta-acciones button {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   IMPRESIÓN Y GUARDADO PDF (@media print)
+   ========================================================================== */
+@media print {
+    /* Reseteo de fondo y colores para ahorrar tinta */
+    body {
+        background-color: var(--texto-blanco) !important;
+        color: #000000 !important;
+    }
+
+    /* Ocultar elementos no relevantes para la impresión */
+    #seccion-login,
+    #barra-navegacion,
+    #modulo-formulario,
+    .consulta-acciones,
+    #msj-contenedor {
+        display: none !important;
+    }
+
+    /* Mostrar únicamente el área principal a todo el ancho */
+    #seccion-principal {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Quitar sombras y bordes flotantes para un diseño plano */
+    .tarjeta-flotante {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Ajustes específicos para la tabla impresa */
+    .tabla-contenedor {
+        overflow: visible !important;
+        box-shadow: none !important;
+    }
+
+    table {
+        width: 100% !important;
+        border: 1px solid #cccccc !important;
+    }
+
+    th, td {
+        border: 1px solid #cccccc !important;
+        color: #000 !important;
+        padding: 8px !important;
+    }
+
+    th {
+        background-color: #f0f0f0 !important;
+        color: #000 !important;
+    }
+
+    /* Evitar que las filas se rompan en diferentes páginas */
+    tr {
+        page-break-inside: avoid !important;
+    }
+}
