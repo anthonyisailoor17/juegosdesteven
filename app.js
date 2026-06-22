@@ -1,7 +1,7 @@
 // ==========================================================================
 // CONFIGURACIÓN DE LA API Y VARIABLES GLOBALES
 // ==========================================================================
-const API_URL = "PEGAR_AQUI_LA_URL_DE_APPS_SCRIPT";
+const API_URL = "https://script.google.com/macros/s/AKfycbweO0HXSVL6SlqnCuSZVX6w4DI_VaHlAJd-wx_euYfMD2E89goTILyoVtKk_B6gCRi-/exec";
 
 // Elementos de la Interfaz - Notificaciones
 const msjContenedor = document.getElementById("msj-contenedor");
